@@ -64,9 +64,9 @@ if(isset($_POST["add1"])){
 		
 	}
  if($hasError!=true){
-	  $query2="insert into employee VALUES('$ename','$cno','$uname','$pass')";
-//$query1="Select * from employee";
-mysqli_query($conn,$query2);
+	  $query1="insert into employee VALUES('$ename','$cno','$uname','$pass')";
+
+mysqli_query($conn,$query1);
 echo "done";
 
 
@@ -81,6 +81,87 @@ else{
 }
 
 
+if(isset($_POST["rm"])){
+	if(empty($_POST["un"])){
+		$err3="*";
+		$hasError=true;
+		
+		
+	}
+	else{
+		$uname=$_POST["un"];
+		
+		
+	}
+if($hasError!=true){
+	  $query2="DELETE FROM `employee` WHERE username='$uname'";
+
+mysqli_query($conn,$query2);
+echo "done1";
+
+
+
+}
+
+else{
+	$hasError="";
+	
+}
+	
+
+}
+
+if(isset($_POST["sr"])){
+	
+	if(empty($_POST["un"])){
+		$err="*";
+		$hasError=true;
+		
+		
+	}
+	else{
+      $uname=$_POST["un"];
+	echo"  
+	
+   <table>
+   <tr>
+	    <td>Employee Name</td>
+		<td>Contact No</td>
+		<td>User Name</td>
+		<td>Password</td>
+		
+	  
+	  </tr>
+	 ";
+
+$result = mysqli_query($conn,"SELECT * FROM `employee` where `username`='$uname'" );
+while($row = mysqli_fetch_assoc($result)){
+	$ename1 = $row['Employee name'];
+  $cno1 = $row['contact no'];
+$uname1 = $row['username'];
+$pass1 = $row['password'];
+
+
+    echo "
+  
+      <tr>
+	    <td>'".$ename1."'</td>
+		<td>'".$cno1."'</td>
+		<td>'".$uname1."'</td>
+		<td>'".$pass1."'</td>
+		
+	  
+	  </tr>";
+}
+	echo" </table>
+   ";
+   
+
+    
+
+
+	}
+}
 
 
 
@@ -134,8 +215,8 @@ else{
                     <input type="password"name="pass" id="pass">
 					<label><?php echo $err4; ?></label><br>
 					 <input type="submit"name="add1" value="Register" style="margin-left:100px;">
-					  <input type="submit"name="rm1" value="REMOVE" style="margin-left:100px;">
-					   <input type="submit"name="src" value="SEARCH" style="margin-left:100px;">
+					  <input type="submit"name="rm" value="REMOVE" style="margin-left:100px;">
+					   <input type="submit"name="sr" value="SEARCH" style="margin-left:100px;">
                    </div>
 				  </fieldset>
 				 </form>
