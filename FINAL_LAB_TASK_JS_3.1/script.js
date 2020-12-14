@@ -63,3 +63,63 @@ function f1(){
 
 }
 }
+"use strict"
+
+function f2(){
+	
+	let dmail= document.getElementById('name1').value;
+	if(dmail == ''){
+		document.getElementById('h').innerHTML = 'Empty input';
+	}
+	else{
+		let check= dmail.includes("@gmail.com");
+		if(check==true){
+			document.getElementById('h').innerHTML = dmail;
+			
+		}
+		else{
+			document.getElementById('h').innerHTML = 'Invalid mail';
+			
+		}
+		
+		
+	}
+	
+	
+	
+	
+}
+function f3(){
+	
+	let a=document.getElementById('m').value;
+	let b=document.getElementById('f').value;
+	let c=document.getElementById('o').value;
+	let valid=false;
+	if(document.getElementById('m').checked){
+	   valid=true;
+	   document.getElementById('h1').innerHTML= document.getElementById('m').value;
+	}
+	else if(document.getElementById('f').checked){
+	   valid=true;
+	   document.getElementById('h1').innerHTML= document.getElementById('f').value;
+	}
+	else if(document.getElementById('o').checked){
+	   valid=true;
+	   document.getElementById('h1').innerHTML= document.getElementById('o').value;
+	}
+	
+	else{
+
+	}
+	
+	if(valid==true){
+		
+	}
+	
+	else{
+		
+			document.getElementById('h1').innerHTML= 'Please select one';
+	}
+	
+	
+}
